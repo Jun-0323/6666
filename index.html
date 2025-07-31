@@ -1,171 +1,153 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>香川大学 創造工学部 情報コース</title>
   <style>
     :root {
-      --main-green: #98fb98;
-      --dark-green: #228b22;
-      --text-color: #333;
-      --bg-light: #f9fff9;
+      --accent-green: #2e8b57;
+      --bg-white: #ffffff;
+      --text-dark: #333333;
     }
-
-    body {
-      margin: 0;
-      font-family: 'Helvetica Neue', sans-serif;
-      background-color: var(--bg-light);
-      color: var(--text-color);
-      line-height: 1.6;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Helvetica Neue', sans-serif; color: var(--text-dark); background: var(--bg-white); }
     header {
-      background-color: var(--main-green);
-      padding: 20px;
+      position: fixed; top: 0; width: 100%;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+      padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000;
+    }
+    header h1 { color: var(--accent-green); font-size: 1.6rem; }
+    nav a { margin-left: 1.5rem; text-decoration: none; color: var(--text-dark); font-weight: 500; }
+    .hero {
+      height: 80vh; background: url('https://images.unsplash.com/photo-1601582583121-b7d1b9ebfbc1') center/cover no-repeat;
+      display: flex; align-items: center; justify-content: center; position: relative;
+    }
+    .hero::after {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+    }
+    .hero-content {
+      position: relative; color: white; text-align: center;
+      padding: 0 2rem;
+    }
+    .hero-content h2 { font-size: 3rem; margin-bottom: 0.5rem; }
+    .hero-content p { font-size: 1.2rem; }
+
+    .section {
+      max-width: 1000px; margin: auto; padding: 4rem 2rem;
       text-align: center;
     }
-
-    header h1 {
-      margin: 0;
-      color: var(--dark-green);
+    .section h3 { font-size: 2rem; color: var(--accent-green); margin-bottom: 1rem; }
+    .cards {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 2rem; margin-top: 2rem;
     }
-
-    nav {
-      background: #e0ffe0;
-      padding: 10px;
-      text-align: center;
+    .card {
+      background: #f9f9f9; padding: 1.5rem; border-radius: 8px;
+      transition: transform 0.3s;
     }
-
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: var(--dark-green);
-      font-weight: bold;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 0 15px;
-    }
-
-    section {
-      margin-bottom: 40px;
-    }
-
-    h2 {
-      border-left: 5px solid var(--dark-green);
-      padding-left: 10px;
-      color: var(--dark-green);
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    button {
-      background-color: var(--main-green);
-      border: none;
-      padding: 10px 15px;
-      border-radius: 4px;
-      cursor: pointer;
-      color: var(--dark-green);
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    button:hover {
-      background-color: #9acd32;
-    }
+    .card:hover { transform: translateY(-5px); }
+    .card img { width: 100%; border-radius: 4px; height: 180px; object-fit: cover; }
+    .card h4 { margin-top: 1rem; font-size: 1.4rem; }
 
     footer {
-      background-color: #f0fff0;
+      padding: 2rem; background: var(--accent-green); color: white;
       text-align: center;
-      padding: 15px;
-      font-size: 0.9em;
-      color: #666;
     }
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.5em;
-      }
-
-      nav {
-        font-size: 0.9em;
-      }
+    @media (max-width:600px) {
+      .hero-content h2 { font-size: 2.2rem; }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>香川大学 創造工学部 情報コース</h1>
-  </header>
-
+<header>
+  <h1>香川大学 情報コース</h1>
   <nav>
-    <a href="#about">概要</a>
-    <a href="#features">特徴</a>
-    <a href="#curriculum">カリキュラム</a>
-    <a href="#career">進路</a>
-    <a href="#contact">お問い合わせ</a>
+    <a href="#about">About</a>
+    <a href="#labs">Labs</a>
+    <a href="#careers">Careers</a>
+    <a href="#contact">Contact</a>
   </nav>
+</header>
 
-  <main>
+<section class="hero">
+  <div class="hero-content">
+    <h2>Tech × Creativity</h2>
+    <p>情報で未来を描く、香川大学 情報コースへようこそ。</p>
+  </div>
+</section>
 
-    <section id="about">
-      <h2>情報コースとは</h2>
-      <p>情報コースでは、プログラミング、AI、ネットワーク、IoT、情報セキュリティなど、情報技術の幅広い分野を体系的に学ぶことができます。課題解決能力や創造力を育み、地域や社会に貢献できるエンジニアを目指します。</p>
-    </section>
+<section class="section" id="about">
+  <h3>情報コースとは？</h3>
+  <p>AI、IoT、ネットワーク、ソフトウェア開発などの最先端技術を学び、創造力あふれる人材を育成します。</p>
+</section>
 
-    <section id="features">
-      <h2>コースの特徴</h2>
-      <ul>
-        <li>プロジェクトベースの実践的学習</li>
-        <li>最新設備と研究環境</li>
-        <li>地域連携による社会実装</li>
-        <li>多様な分野と連携した学際教育</li>
+<section class="section" id="labs">
+  <h3>研究室紹介</h3>
+  <div class="cards">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="AI研究室">
+      <h4>AI・機械学習研究室</h4>
+      <p>ディープラーニング、自然言語処理など</p>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1554475901-4538ddfbccc2" alt="IoT研究室">
+      <h4>IoT・組み込みシステム研究室</h4>
+      <p>センサー制御、エッジコンピューティングなど</p>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1584433144859-1fc1f7b3f1aa" alt="ネットワークセキュリティ研究室">
+      <h4>ネットワークセキュリティ研究室</h4>
+      <p>サイバー攻撃耐性、暗号技術、WebやIoTの安全設計などに取り組んでいます。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="careers">
+  <h3>主な進学・就職先</h3>
+  <div class="cards">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df" alt="企業">
+      <h4>就職先</h4>
+      <ul style="text-align:left; line-height:1.6;">
+        <li>富士通株式会社</li>
+        <li>楽天グループ</li>
+        <li>NTTデータ</li>
+        <li>四国電力</li>
       </ul>
-    </section>
+    </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1588072432836-e10032774350" alt="大学院">
+      <h4>進学先（大学院）</h4>
+      <ul style="text-align:left; line-height:1.6;">
+        <li>香川大学大学院</li>
+        <li>京都大学大学院</li>
+        <li>東京工業大学大学院</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-    <section id="curriculum">
-      <h2>主なカリキュラム</h2>
-      <button onclick="toggleCurriculum()">詳細を見る</button>
-      <div id="curriculumDetails" style="display: none; margin-top: 10px;">
-        <ul>
-          <li>情報処理基礎・プログラミング</li>
-          <li>データ構造とアルゴリズム</li>
-          <li>人工知能と機械学習</li>
-          <li>ネットワーク・セキュリティ</li>
-          <li>IoT/クラウド活用技術</li>
-          <li>卒業研究とプロジェクト発表</li>
-        </ul>
-      </div>
-    </section>
+<section class="section" id="contact">
+  <h3>お問い合わせ</h3>
+  <p>〒760-8521 香川県高松市幸町1-1<br><a href="https://www.kagawa-u.ac.jp/" style="color: var(--accent-green); font-weight:bold;">香川大学 公式サイト</a></p>
+</section>
 
-    <section id="career">
-      <h2>卒業後の進路</h2>
-      <p>多くの学生がIT企業、通信、製造業、公務員、大学院進学など幅広い分野で活躍しています。地域企業との連携を活かした就職支援も充実しています。</p>
-    </section>
+<footer>
+  &copy; 2025 香川大学 創造工学部 情報コース
+</footer>
 
-    <section id="contact">
-      <h2>お問い合わせ</h2>
-      <p>詳しくは <a href="https://www.kagawa-u.ac.jp/" target="_blank">香川大学公式サイト</a> をご覧ください。</p>
-    </section>
-
-  </main>
-
-  <footer>
-    <p>&copy; 2025 香川大学 創造工学部 情報コース</p>
-  </footer>
-
-  <script>
-    function toggleCurriculum() {
-      const el = document.getElementById("curriculumDetails");
-      el.style.display = (el.style.display === "none") ? "block" : "none";
-    }
-  </script>
+<script>
+  document.querySelectorAll('nav a').forEach(a => {
+    a.onclick = e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+    };
+  });
+</script>
 
 </body>
 </html>
