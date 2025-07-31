@@ -1,153 +1,578 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>香川大学 創造工学部 情報コース</title>
-  <style>
-    :root {
-      --accent-green: #2e8b57;
-      --bg-white: #ffffff;
-      --text-dark: #333333;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Helvetica Neue', sans-serif; color: var(--text-dark); background: var(--bg-white); }
-    header {
-      position: fixed; top: 0; width: 100%;
-      background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-      padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000;
-    }
-    header h1 { color: var(--accent-green); font-size: 1.6rem; }
-    nav a { margin-left: 1.5rem; text-decoration: none; color: var(--text-dark); font-weight: 500; }
-    .hero {
-      height: 80vh; background: url('https://images.unsplash.com/photo-1601582583121-b7d1b9ebfbc1') center/cover no-repeat;
-      display: flex; align-items: center; justify-content: center; position: relative;
-    }
-    .hero::after {
-      content: ''; position: absolute; top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.4);
-    }
-    .hero-content {
-      position: relative; color: white; text-align: center;
-      padding: 0 2rem;
-    }
-    .hero-content h2 { font-size: 3rem; margin-bottom: 0.5rem; }
-    .hero-content p { font-size: 1.2rem; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>香川大学創造工学部 情報コース</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .section {
-      max-width: 1000px; margin: auto; padding: 4rem 2rem;
-      text-align: center;
-    }
-    .section h3 { font-size: 2rem; color: var(--accent-green); margin-bottom: 1rem; }
-    .cards {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 2rem; margin-top: 2rem;
-    }
-    .card {
-      background: #f9f9f9; padding: 1.5rem; border-radius: 8px;
-      transition: transform 0.3s;
-    }
-    .card:hover { transform: translateY(-5px); }
-    .card img { width: 100%; border-radius: 4px; height: 180px; object-fit: cover; }
-    .card h4 { margin-top: 1rem; font-size: 1.4rem; }
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #000000;
+            background-color: #FAFAFA;
+        }
 
-    footer {
-      padding: 2rem; background: var(--accent-green); color: white;
-      text-align: center;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    @media (max-width:600px) {
-      .hero-content h2 { font-size: 2.2rem; }
-    }
-  </style>
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2E7D32, #4CAF50);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #81C784;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #E8F5E8, #C8E6C9);
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #000000;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #000000;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #000000;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #4CAF50, #81C784);
+            border-radius: 2px;
+        }
+
+        /* Overview Section */
+        .overview {
+            background: white;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .overview-card {
+            background: linear-gradient(135deg, #E8F5E8, #F1F8E9);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(76, 175, 80, 0.2);
+            border-color: #81C784;
+        }
+
+        .overview-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #000000;
+        }
+
+        /* Programs Section */
+        .programs {
+            background: #F9F9F9;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .program-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(76, 175, 80, 0.2);
+        }
+
+        .program-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #000000;
+        }
+
+        /* Curriculum Section */
+        .curriculum {
+            background: white;
+        }
+
+        .curriculum-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .curriculum-item {
+            background: linear-gradient(135deg, #E8F5E8, #C8E6C9);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .curriculum-item:hover {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Research Section */
+        .research {
+            background: #F9F9F9;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .research-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .research-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(76, 175, 80, 0.2);
+        }
+
+        .research-card h4 {
+            color: #000000;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Career Section */
+        .career {
+            background: linear-gradient(135deg, #E8F5E8, #C8E6C9);
+        }
+
+        .career-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .career-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .career-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(76, 175, 80, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #2E7D32, #1B5E20);
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #81C784;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #81C784;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">香川大学 創造工学部</div>
+            <ul class="nav-links">
+                <li><a href="#overview">概要</a></li>
+                <li><a href="#programs">専門プログラム</a></li>
+                <li><a href="#curriculum">カリキュラム</a></li>
+                <li><a href="#research">研究分野</a></li>
+                <li><a href="#career">進路</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<header>
-  <h1>香川大学 情報コース</h1>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#labs">Labs</a>
-    <a href="#careers">Careers</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>情報コース</h1>
+                <p>新しい社会をデザインできる次世代型の情報技術者の育成</p>
+                <a href="#overview" class="cta-button">詳しく見る</a>
+            </div>
+        </div>
+    </section>
 
-<section class="hero">
-  <div class="hero-content">
-    <h2>Tech × Creativity</h2>
-    <p>情報で未来を描く、香川大学 情報コースへようこそ。</p>
-  </div>
-</section>
+    <!-- Overview Section -->
+    <section id="overview" class="overview">
+        <div class="container">
+            <h2 class="section-title fade-in">コース概要</h2>
+            <div class="overview-grid">
+                <div class="overview-card fade-in">
+                    <h3>2025年4月新設</h3>
+                    <p>AIの発展やSociety5,0へ移行などにより社会は大きく変化しています。そのような社会において、情報技術に加え、AIやクラウドやセキュリティ技術にも対応できる技術者が求められています。</p>
+                </div>
+                <div class="overview-card fade-in">
+                    <h3>定員増加</h3>
+                    <p>社会のニーズに応えるために情報コースの定員を70名に増加し、より多くの学生に最先端の情報教育を提供します。</p>
+                </div>
+                <div class="overview-card fade-in">
+                    <h3>実践的教育</h3>
+                    <p>理論だけでなく、実践的なスキルを身につけることができる教育プログラムを提供します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="section" id="about">
-  <h3>情報コースとは？</h3>
-  <p>AI、IoT、ネットワーク、ソフトウェア開発などの最先端技術を学び、創造力あふれる人材を育成します。</p>
-</section>
+    <!-- Programs Section -->
+    <section id="programs" class="programs">
+        <div class="container">
+            <h2 class="section-title fade-in">専門プログラム</h2>
+            <div class="programs-grid">
+                <div class="program-card fade-in">
+                    <h3>情報システム・セキュリティプログラム</h3>
+                    <p>情報システムを支えるための基盤を開発できる技術者を育成します。</p>
+                    <ul style="text-align: left; margin-top: 1rem;">
+                        <li>高度なセキュリティ技術</li>
+                        <li>システム設計・開発</li>
+                        <li>ネットワーク技術</li>
+                        <li>データベース管理</li>
+                    </ul>
+                </div>
+                <div class="program-card fade-in">
+                    <h3>情報社会プログラム</h3>
+                    <p>情報技術を用いて新たな社会をデザインする技術者を育成します。</p>
+                    <ul style="text-align: left; margin-top: 1rem;">
+                        <li>AI・機械学習</li>
+                        <li>データサイエンス</li>
+                        <li>ヒューマンインタフェース</li>
+                        <li>サービス設計</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="section" id="labs">
-  <h3>研究室紹介</h3>
-  <div class="cards">
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475" alt="AI研究室">
-      <h4>AI・機械学習研究室</h4>
-      <p>ディープラーニング、自然言語処理など</p>
-    </div>
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1554475901-4538ddfbccc2" alt="IoT研究室">
-      <h4>IoT・組み込みシステム研究室</h4>
-      <p>センサー制御、エッジコンピューティングなど</p>
-    </div>
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1584433144859-1fc1f7b3f1aa" alt="ネットワークセキュリティ研究室">
-      <h4>ネットワークセキュリティ研究室</h4>
-      <p>サイバー攻撃耐性、暗号技術、WebやIoTの安全設計などに取り組んでいます。</p>
-    </div>
-  </div>
-</section>
+    <!-- Curriculum Section -->
+    <section id="curriculum" class="curriculum">
+        <div class="container">
+            <h2 class="section-title fade-in">主要科目</h2>
+            <div class="curriculum-grid">
+                <div class="curriculum-item fade-in">人工知能</div>
+                <div class="curriculum-item fade-in">情報セキュリティ</div>
+                <div class="curriculum-item fade-in">ソフトウェアシステム</div>
+                <div class="curriculum-item fade-in">Webシステム開発</div>
+                <div class="curriculum-item fade-in">データマイニング</div>
+                <div class="curriculum-item fade-in">ヒューマンインタフェース</div>
+                <div class="curriculum-item fade-in">サービス工学</div>
+                <div class="curriculum-item fade-in">情報デザイン</div>
+            </div>
+        </div>
+    </section>
 
-<section class="section" id="careers">
-  <h3>主な進学・就職先</h3>
-  <div class="cards">
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df" alt="企業">
-      <h4>就職先</h4>
-      <ul style="text-align:left; line-height:1.6;">
-        <li>富士通株式会社</li>
-        <li>楽天グループ</li>
-        <li>NTTデータ</li>
-        <li>四国電力</li>
-      </ul>
-    </div>
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1588072432836-e10032774350" alt="大学院">
-      <h4>進学先（大学院）</h4>
-      <ul style="text-align:left; line-height:1.6;">
-        <li>香川大学大学院</li>
-        <li>京都大学大学院</li>
-        <li>東京工業大学大学院</li>
-      </ul>
-    </div>
-  </div>
-</section>
+    <!-- Research Section -->
+    <section id="research" class="research">
+        <div class="container">
+            <h2 class="section-title fade-in">研究分野</h2>
+            <div class="research-grid">
+                <div class="research-card fade-in">
+                    <h4>自然言語処理・情報検索</h4>
+                    <p>テキストデータの解析や検索技術の研究を行います。</p>
+                </div>
+                <div class="research-card fade-in">
+                    <h4>プログラミング言語・学習支援</h4>
+                    <p>効率的なプログラミング言語の設計と学習支援システムの開発を行います。</p>
+                </div>
+                <div class="research-card fade-in">
+                    <h4>ネットワークアーキテクチャ</h4>
+                    <p>次世代ネットワークシステムの設計と最適化を行います。</p>
+                </div>
+                <div class="research-card fade-in">
+                    <h4>知的支援システム</h4>
+                    <p>AIを活用した人間の活動を支援するシステムの研究を行います。</p>
+                </div>
+                <div class="research-card fade-in">
+                    <h4>クラウドシステム</h4>
+                    <p>スケーラブルで効率的なクラウドコンピューティング技術を身に付けます。</p>
+                </div>
+                <div class="research-card fade-in">
+                    <h4>情報セキュリティ</h4>
+                    <p>サイバーセキュリティと情報保護技術の研究を行います。</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="section" id="contact">
-  <h3>お問い合わせ</h3>
-  <p>〒760-8521 香川県高松市幸町1-1<br><a href="https://www.kagawa-u.ac.jp/" style="color: var(--accent-green); font-weight:bold;">香川大学 公式サイト</a></p>
-</section>
+    <!-- Career Section -->
+    <section id="career" class="career">
+        <div class="container">
+            <h2 class="section-title fade-in">想定される進路</h2>
+            <div class="career-list">
+                <div class="career-item fade-in">
+                    <h4>デザイナー</h4>
+                    <p>情報技術を用いて新たな社会をデザインする設計者</p>
+                </div>
+                <div class="career-item fade-in">
+                    <h4>システム開発者</h4>
+                    <p>利用者の立場で情報システムを開発する開発者</p>
+                </div>
+                <div class="career-item fade-in">
+                    <h4>エンジニア</h4>
+                    <p>情報システムの安全を守る情報セキュリティ技術者</p>
+                </div>
+                <div class="career-item fade-in">
+                    <h4>その他の分野</h4>
+                    <p>情報システム産業、ネット企業、公務員等</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<footer>
-  &copy; 2025 香川大学 創造工学部 情報コース
-</footer>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>お問い合わせ</h4>
+                    <p>香川大学創造工学部</p>
+                    <p>〒761-0396 香川県高松市林町2217-20</p>
+                </div>
+                <div class="footer-section">
+                    <h4>関連リンク</h4>
+                    <p><a href="https://www.kagawa-u.ac.jp/">香川大学公式サイト</a></p>
+                    <p><a href="#">プライバシーポリシー</a></p>
+                    <p><a href="#">サイトマップ</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>アクセス</h4>
+                    <p>ことでん高田駅より徒歩15分</p>
+                    <p>高松中央ICより車で10分</p>
+                </div>
+            </div>
+            <p>&copy; 2025 香川大学創造工学部 情報コース. All rights reserved.</p>
+        </div>
+    </footer>
 
-<script>
-  document.querySelectorAll('nav a').forEach(a => {
-    a.onclick = e => {
-      e.preventDefault();
-      document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});
-    };
-  });
-</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faders = document.querySelectorAll('.fade-in');
 
+            const appearOptions = {
+                threshold: 0.1
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+                    entry.target.classList.add('visible');
+                    appearOnScroll.unobserve(entry.target);
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
 </body>
 </html>
